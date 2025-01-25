@@ -15,13 +15,13 @@ func createRandomTransfer(t *testing.T, account1 Account, account2 Account) Tran
 	arg := CreateTransferParams{
 		FromAccountID: sql.NullInt64{
 			Int64: account1.ID,
-			Valid: true,  
+			Valid: true,
 		},
 		ToAccountID: sql.NullInt64{
 			Int64: account2.ID,
-			Valid: true,  
+			Valid: true,
 		},
-		Amount:    util.RandomMoney(),
+		Amount: util.RandomMoney(),
 	}
 	transfer, err := testQueries.CreateTransfer(context.Background(), arg)
 	require.NoError(t, err)
@@ -38,15 +38,15 @@ func createRandomTransfer(t *testing.T, account1 Account, account2 Account) Tran
 }
 
 func TestCreateTransfer(t *testing.T) {
-  account1 := createRandomAccount(t)
-  account2 := createRandomAccount(t)
+	account1 := createRandomAccount(t)
+	account2 := createRandomAccount(t)
 	createRandomTransfer(t, account1, account2)
 }
 
 func TestGetTransfer(t *testing.T) {
-  account1 := createRandomAccount(t)
-  account2 := createRandomAccount(t)
-transfer1 := createRandomTransfer(t,account1, account2)
+	account1 := createRandomAccount(t)
+	account2 := createRandomAccount(t)
+	transfer1 := createRandomTransfer(t, account1, account2)
 
 	transfer2, err := testQueries.GetTransfer(context.Background(), transfer1.ID)
 	require.NoError(t, err)
@@ -63,18 +63,18 @@ func TestListTransfers(t *testing.T) {
 	account1 := createRandomAccount(t)
 	account2 := createRandomAccount(t)
 	for i := 0; i < 10; i++ {
-		
+
 		createRandomTransfer(t, account1, account2)
 	}
 
 	arg := ListTransfersParams{
 		FromAccountID: sql.NullInt64{
 			Int64: account1.ID,
-			Valid: true,  
+			Valid: true,
 		},
 		ToAccountID: sql.NullInt64{
 			Int64: account2.ID,
-			Valid: true,  
+			Valid: true,
 		},
 		Limit:  5,
 		Offset: 5,
@@ -86,6 +86,6 @@ func TestListTransfers(t *testing.T) {
 
 	for _, transfer := range transfers {
 		require.NotEmpty(t, transfer)
-		require.Equal(t, arg.FromAccountID.Int64, transfer.ToAccountID)
+		require.True(t, transfer.FromAccountID.Int64 == account1.ID || transfer.ToAccountID.Int64 == account1.ID)
 	}
 }

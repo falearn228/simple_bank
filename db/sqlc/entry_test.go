@@ -15,9 +15,9 @@ func createRandomEntry(t *testing.T, account Account) Entry {
 	arg := CreateEntryParams{
 		AccountID: sql.NullInt64{
 			Int64: account.ID,
-			Valid: true,  
+			Valid: true,
 		},
-		Amount:    util.RandomMoney(),
+		Amount: util.RandomMoney(),
 	}
 	entry, err := testQueries.CreateEntry(context.Background(), arg)
 	require.NoError(t, err)
@@ -33,13 +33,13 @@ func createRandomEntry(t *testing.T, account Account) Entry {
 }
 
 func TestCreateEntry(t *testing.T) {
-  account := createRandomAccount(t)
+	account := createRandomAccount(t)
 	createRandomEntry(t, account)
 }
 
 func TestGetEntry(t *testing.T) {
-  account := createRandomAccount(t)
-	entry1 := createRandomEntry(t,account)
+	account := createRandomAccount(t)
+	entry1 := createRandomEntry(t, account)
 	entry2, err := testQueries.GetEntry(context.Background(), entry1.ID)
 	require.NoError(t, err)
 	require.NotEmpty(t, entry2)
@@ -52,14 +52,14 @@ func TestGetEntry(t *testing.T) {
 func TestListEntries(t *testing.T) {
 	account := createRandomAccount(t)
 	for i := 0; i < 10; i++ {
-		
+
 		createRandomEntry(t, account)
 	}
 
 	arg := ListEntriesParams{
-		AccountID:  sql.NullInt64{
+		AccountID: sql.NullInt64{
 			Int64: account.ID,
-			Valid: true,  
+			Valid: true,
 		},
 		Limit:  5,
 		Offset: 5,
@@ -71,6 +71,6 @@ func TestListEntries(t *testing.T) {
 
 	for _, entry := range entries {
 		require.NotEmpty(t, entry)
-		require.Equal(t, arg.AccountID.Int64, entry.AccountID)
+		require.Equal(t, arg.AccountID.Int64, entry.AccountID.Int64)
 	}
 }
