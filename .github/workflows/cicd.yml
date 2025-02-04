@@ -49,7 +49,9 @@ jobs:
       run: make migrateup
 
     - name: Install dependecies
-      run: go mod download
+      run: |
+        go mod tidy
+        go mod download
 
     - name: Test
       run: make test

@@ -1,6 +1,6 @@
 postgres:
 	docker run --name postgres17 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:17-alpine
-start:
+startdb:
 	docker start postgres17
 createdb:
 	docker exec -it postgres17 createdb --username=root --owner=root simple_bank
@@ -14,4 +14,6 @@ sqlc:
 	sqlc generate
 test:
 	go test -v -cover ./...
-.PHONY: postgres start createdb dropdb migrateup migratedown sqlc test
+server:
+	go run main.go
+.PHONY: postgres start createdb dropdb migrateup migratedown sqlc test server
