@@ -7,12 +7,12 @@ import (
 
 // Сервер служит всем HTTP запросам для данного банк-сервиса
 type Server struct {
-	store *db.Store
+	store db.Store
 	// Помогает отправлять HTTP req к нужным handler'ам
 	router *gin.Engine
 }
 
-func NewServer(store *db.Store) *Server {
+func NewServer(store db.Store) *Server {
 	server := &Server{store: store}
 	router := gin.Default()
 
