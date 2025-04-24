@@ -12,7 +12,7 @@ type createAccountReq struct {
 	Owner string `json:"owner" binding:"required"`
 	// При создании нулевого аккаунта, баланс всегда должен быть равен нулю
 	// Balance  int64  `json:"balance" binding:"required"`
-	Currency string `json:"currency" binding:"required,oneof=USD EUR RUB"`
+	Currency string `json:"currency" binding:"required,currency"`
 }
 
 func (server *Server) createAccount(ctx *gin.Context) {
