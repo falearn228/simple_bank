@@ -3,7 +3,7 @@ package util
 import "github.com/spf13/viper"
 
 // Конфиг содержит все конфигурации приложения. Значения
-// читаются с помощью Viper'a из конфиг-файда или env variables
+// читаются с помощью Viper'a из конфиг-файла или env variables
 type Config struct {
 	DBDriver string `mapstructure:"DB_DRIVER"`
 	DBSource string `mapstructure:"DB_SOURCE"`

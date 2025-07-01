@@ -24,7 +24,7 @@ func TestGetAccountAPI(t *testing.T) {
 		name          string
 		accountID     int64
 		buildStubs    func(store *mockDB.MockStore)
-		checkResponse func(t *testing.T, recorder *httptest.ResponseRecorder)
+		checkResponse func(t *testing.T, r *httptest.ResponseRecorder)
 	}{
 		{
 			name:      "OK",
