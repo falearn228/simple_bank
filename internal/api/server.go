@@ -1,10 +1,11 @@
 package api
 
 import (
+	db "bobbabank/internal/db/sqlc"
+
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
-	db "github.com/simple_bank_course/db/sqlc"
 )
 
 // Сервер служит всем HTTP запросам для данного банк-сервиса

@@ -1,8 +1,9 @@
 package api
 
 import (
+	"bobbabank/internal/util"
+
 	"github.com/go-playground/validator/v10"
-	"github.com/simple_bank_course/util"
 )
 
 var validCurrency validator.Func = func(fl validator.FieldLevel) bool {

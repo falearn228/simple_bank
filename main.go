@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/simple_bank_course/api"
-	db "github.com/simple_bank_course/db/sqlc"
-	"github.com/simple_bank_course/util"
+	"bobbabank/internal/api"
+	db "bobbabank/internal/db/sqlc"
+	"bobbabank/internal/util"
 
 	_ "github.com/lib/pq"
 )

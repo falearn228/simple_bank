@@ -6,7 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/simple_bank_course/util"
+	"bobbabank/internal/util"
+
 	"github.com/stretchr/testify/require"
 )
 

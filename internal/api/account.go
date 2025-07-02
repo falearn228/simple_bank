@@ -4,8 +4,9 @@ import (
 	"database/sql"
 	"net/http"
 
+	db "bobbabank/internal/db/sqlc"
+
 	"github.com/gin-gonic/gin"
-	db "github.com/simple_bank_course/db/sqlc"
 )
 
 type createAccountReq struct {

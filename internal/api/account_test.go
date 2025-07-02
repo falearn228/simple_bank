@@ -10,10 +10,11 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	mockDB "bobbabank/internal/db/mock"
+	db "bobbabank/internal/db/sqlc"
+	"bobbabank/internal/util"
+
 	"github.com/golang/mock/gomock"
-	mockDB "github.com/simple_bank_course/db/mock"
-	db "github.com/simple_bank_course/db/sqlc"
-	"github.com/simple_bank_course/util"
 	"github.com/stretchr/testify/require"
 )
 

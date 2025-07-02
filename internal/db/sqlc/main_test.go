@@ -6,8 +6,9 @@ import (
 	"os"
 	"testing"
 
+	"bobbabank/internal/util"
+
 	_ "github.com/lib/pq"
-	"github.com/simple_bank_course/util"
 )
 
 var testQueries *Queries

@@ -3,13 +3,17 @@ postgres:
 startdb:
 	docker start postgres17
 createdb:
-	docker exec -it postgres17 createdb --username=root --owner=root simple_bank
+	docker exec -it postgres17 createdb --username=root --owner=root bobbabank
 dropdb:
-	docker exec -it postgres17 dropdb simple_bank	
+	docker exec -it postgres17 dropdb bobbabank	
 migrateup:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
+	migrate -path internal/db/migration -database "postgresql://root:secret@localhost:5432/bobbabank?sslmode=disable" -verbose up
+migrateup1:
+	migrate -path internal/db/migration -database "postgresql://root:secret@localhost:5432/bobbabank?sslmode=disable" -verbose up 1
 migratedown:
-	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
+	migrate -path internal/db/migration -database "postgresql://root:secret@localhost:5432/bobbabank?sslmode=disable" -verbose down
+migratedown1:
+	migrate -path internal/db/migration -database "postgresql://root:secret@localhost:5432/bobbabank?sslmode=disable" -verbose down 1
 sqlc:
 	sqlc generate
 test:
@@ -17,5 +21,5 @@ test:
 server:
 	go run main.go
 mock:
-	mockgen -package mockDB -destination db/mock/store.go github.com/simple_bank_course/db/sqlc Store
+	mockgen -package mockDB -destination internal/db/mock/store.go bobbabank/internal/db/sqlc Store
 .PHONY: postgres start createdb dropdb migrateup migratedown sqlc test server mock

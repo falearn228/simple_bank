@@ -1,4 +1,4 @@
-module github.com/simple_bank_course
+module bobbabank
 
 go 1.23.4
 
