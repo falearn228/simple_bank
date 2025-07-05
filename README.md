@@ -1,4 +1,4 @@
-## Simple bank service
+## Bank service
 
 The service that we’re going to build is a simple bank - bobbabank! It will provide APIs for the frontend client to do following things:
 
@@ -11,7 +11,7 @@ The service that we’re going to build is a simple bank - bobbabank! It will pr
 ### Install tools
 
 - [Docker desktop](https://www.docker.com/products/docker-desktop)
-- [TablePlus](https://tableplus.com/)
+- [TablePlus](https://tableplus.com/) (Or use VsCode extension...)
 - [Golang](https://golang.org/)
 - [Postman](https://www.postman.com/)
 - [Sqlc](https://docs.sqlc.dev/en/latest/overview/install.html)
