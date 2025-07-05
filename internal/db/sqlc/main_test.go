@@ -22,7 +22,7 @@ func TestMain(m *testing.M) {
 	// defer conn.Close()
 
 	// testQueries = New(conn)
-	config, err := util.LoadConfig("../..")
+	config, err := util.LoadConfig("../../..")
 	if err != nil {
 		log.Fatal("can't load configurations: ", err)
 	}
